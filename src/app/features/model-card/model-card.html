@@ -1,0 +1,41 @@
+<div class="container mx-auto pb-20 px-22">
+  <div class="flex justify-start gap-3">
+    @for (btn of filterBtn; track btn.name; let i = $index) {
+      <button
+        class="text-white flex items-center rounded-full transition-colors cursor-pointer py-3 px-5 gap-2 bg-button-inactive hover:bg-button-active"
+      >
+        <img class="h-5 w-5" src="{{ btn.icon }}" alt="" />{{ btn.name }}
+      </button>
+    }
+  </div>
+  <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    @for (card of cards; track card.name) {
+      <article
+        class="group relative cursor-pointer min-h-[520px] overflow-hidden rounded-[28px] border border-white/8 bg-[#0a090d] shadow-[0_24px_80px_rgba(0,0,0,0.45)]
+         hover:border-secondary transition-colors hover:border-b-2"
+      >
+        <img
+          class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          src="{{ card.image }}"
+          alt="{{ card.name }}"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[#08070b] via-[#08070bb8] to-transparent"
+        ></div>
+        <div class="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 p-6 sm:p-8">
+          <h2 class="text-3xl font-semibold tracking-tight text-white">{{ card.name }}</h2>
+          <p class="max-w-[26ch] text-base leading-7 text-zinc-300">
+            {{ card.description }}
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 pt-2 text-lg font-semibold text-fuchsia-400 transition-colors hover:text-fuchsia-300"
+          >
+            View Profile
+            <span aria-hidden="true" class="text-xl">→</span>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</div>

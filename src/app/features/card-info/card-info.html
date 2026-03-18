@@ -1,0 +1,47 @@
+<div class="container mx-auto pb-20 px-24">
+  <div class="pt-20">
+    <button class="text-white flex items-center gap-2 cursor-pointer mt-6">
+      <img class="h-5 w-5" src="/assets/arrow.svg" alt="" /> Back to Discover
+    </button>
+  </div>
+
+  <div class="grid grid-cols-2 gap-10 mt-10">
+    <div>
+      <img class="rounded-[28px] w-full" src="/assets/model.jpg" alt="test" />
+    </div>
+    <div class="sticky top-20 self-start">
+      <h2 class="text-5xl font-bold text-white">Sophia Rose</h2>
+      <p class="text-secondary mt-2 text-lg">Fitness enthusiast & lifestyle creator</p>
+
+      <div class="my-10 space-x-5">
+        <button (click)="toggleHeart()">
+          <img
+            class="h-7 w-7 cursor-pointer"
+            [src]="isFavorite ? './assets/heart.svg' : './assets/heart-white.svg'"
+            alt="like"
+          />
+        </button>
+
+        <button>
+          <img class="h-7 w-7 cursor-pointer" src="/assets/share.svg" alt="share" />
+        </button>
+      </div>
+      <div class="border border-gray-800 p-6 rounded-lg">
+        <h3 class="text-white text-lg mb-3">About Me</h3>
+        <p class="text-gray-400 mt-2">
+          I'm a fitness enthusiast and lifestyle creator passionate about helping others achieve
+          their health and wellness goals. With years of experience in the industry, I strive to
+          provide valuable insights and motivation to my community.
+        </p>
+      </div>
+
+      <div class="my-14">
+        <button
+          class="flex items-center justify-center gap-1 text-xl bg-button-active text-white py-4 w-full rounded-full hover:bg-secondary transition-colors cursor-pointer"
+        >
+         <img class="h-6 w-6" src="./assets/chat.svg" alt=""> Chat with me
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
