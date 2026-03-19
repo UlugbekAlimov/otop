@@ -1,4 +1,6 @@
-<app-navbar></app-navbar>
+@if (showNavbar()) {
+  <app-navbar></app-navbar>
+}
 <router-outlet />
 <!-- <div class="glob_margin">
   <app-main></app-main>

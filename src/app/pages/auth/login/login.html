@@ -1,0 +1,43 @@
+<div class="mx-auto container min-h-screen flex items-center justify-center">
+  <div class="bg-[#0F0F16] border border-gray-800 rounded-xl p-8 max-w-md w-full">
+    <h1 class="text-white text-3xl font-semibold text-center">Admin Panel</h1>
+    <p class="text-gray-400 mt-2 text-center">Enter your password to access</p>
+
+    <form class="mt-6" (ngSubmit)="login()">
+      <div class="relative">
+        <label for="password" class="text-gray-400">Password</label>
+        <input
+          [(ngModel)]="password"
+          (ngModelChange)="error = ''"
+          name="password"
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          class="w-full bg-[#1E1E28] border border-gray-800 rounded-lg px-4 py-2 mt-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="button"
+          (click)="togglePassword()"
+          class="absolute right-3 top-13 cursor-pointer -translate-y-1/2 text-gray-400 hover:text-white"
+        >
+          <img
+            [src]="showPassword ? './assets/eye.svg' : './assets/eyeoff.svg'"
+            class="w-5 h-5"
+            alt="eye icon"
+          />
+        </button>
+        @if (error) {
+          <p class="text-red-500 text-sm mt-2">{{ error }}</p>
+        }
+      </div>
+
+      <div class="mt-8">
+        <button
+          type="submit"
+          class="w-full cursor-pointer bg-secondary hover:bg-button-active text-white font-semibold rounded-lg px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0F0F16] focus:ring-blue-500"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
