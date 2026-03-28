@@ -1,0 +1,145 @@
+<admin-navbar></admin-navbar>
+
+<div class="container mx-auto px-4 sm:px-8 lg:px-25 pb-20 mt-30">
+  <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <article class="stat-card">
+      <p class="stat-label">Pending</p>
+      <p class="stat-value">{{ pendingCount }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">In Review</p>
+      <p class="stat-value">{{ inReviewCount }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Approved</p>
+      <p class="stat-value">{{ approvedCount }}</p>
+    </article>
+    <article class="stat-card">
+      <p class="stat-label">Rejected</p>
+      <p class="stat-value">{{ rejectedCount }}</p>
+    </article>
+  </section>
+
+  <section class="panel mt-6">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h2 class="text-white text-xl font-semibold">New Model Card Applications</h2>
+        <p class="text-gray-400 text-sm mt-1">
+          Moderate incoming requests before publishing cards.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <button
+          class="filter-btn"
+          [class.filter-btn-active]="selectedStatus === 'all'"
+          (click)="setFilter('all')"
+        >
+          All
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn-active]="selectedStatus === 'pending'"
+          (click)="setFilter('pending')"
+        >
+          Pending
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn-active]="selectedStatus === 'in_review'"
+          (click)="setFilter('in_review')"
+        >
+          In Review
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn-active]="selectedStatus === 'approved'"
+          (click)="setFilter('approved')"
+        >
+          Approved
+        </button>
+        <button
+          class="filter-btn"
+          [class.filter-btn-active]="selectedStatus === 'rejected'"
+          (click)="setFilter('rejected')"
+        >
+          Rejected
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-5 overflow-x-auto">
+      <table class="w-full min-w-[760px]">
+        <thead>
+          <tr class="text-left text-xs uppercase text-gray-400 border-b border-gray-700">
+            <th class="py-3 pr-4">ID</th>
+            <th class="py-3 pr-4">Model</th>
+            <th class="py-3 pr-4">Category</th>
+            <th class="py-3 pr-4">Author</th>
+            <th class="py-3 pr-4">Source</th>
+            <th class="py-3 pr-4">Submitted</th>
+            <th class="py-3 pr-4">Status</th>
+            <th class="py-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (application of filteredApplications; track trackById($index, application)) {
+            <tr class="border-b border-gray-800 hover:bg-[#191a23] transition-colors">
+              <td class="py-4 pr-4 text-sm text-gray-300">#{{ application.id }}</td>
+              <td class="py-4 pr-4">
+                <p class="text-white font-medium">{{ application.modelName }}</p>
+                @if (application.reason) {
+                  <p class="text-xs text-red-400 mt-1">{{ application.reason }}</p>
+                }
+              </td>
+              <td class="py-4 pr-4 text-sm text-gray-300">{{ application.category }}</td>
+              <td class="py-4 pr-4 text-sm text-gray-300">{{ application.author }}</td>
+              <td class="py-4 pr-4 text-sm text-gray-300">{{ application.source }}</td>
+              <td class="py-4 pr-4 text-sm text-gray-300">{{ application.createdAt }}</td>
+              <td class="py-4 pr-4">
+                <span
+                  class="status-pill"
+                  [class.status-pill-pending]="application.status === 'pending'"
+                  [class.status-pill-review]="application.status === 'in_review'"
+                  [class.status-pill-approved]="application.status === 'approved'"
+                  [class.status-pill-rejected]="application.status === 'rejected'"
+                >
+                  {{ application.status }}
+                </span>
+              </td>
+              <td class="py-4">
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    class="action-btn action-review"
+                    (click)="moveToReview(application.id)"
+                    [disabled]="application.status === 'in_review'"
+                  >
+                    Review
+                  </button>
+                  <button
+                    class="action-btn action-approve"
+                    (click)="approveApplication(application.id)"
+                    [disabled]="application.status === 'approved'"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    class="action-btn action-reject"
+                    (click)="rejectApplication(application.id)"
+                    [disabled]="application.status === 'rejected'"
+                  >
+                    Reject
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      @if (!filteredApplications.length) {
+        <p class="text-gray-400 text-sm mt-6">No applications in this status.</p>
+      }
+    </div>
+  </section>
+</div>

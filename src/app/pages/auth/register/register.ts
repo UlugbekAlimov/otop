@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   imports: [FormsModule, RouterLink],
-  templateUrl: './login.html',
-  styleUrl: './login.css',
+  templateUrl: './register.html',
+  styleUrl: './register.css',
 })
-export class Login {
+export class Register {
   password: string = '';
+  email: string = '';
   showPassword = false;
   error: string = '';
 
   constructor(private router: Router) {}
 
-  login() {
-    if (this.password === 'admin') {
+  register() {
+    if (this.password === 'admin' && this.email === 'admin@example.com') {
       this.router.navigate(['/admin']);
       this.error = '';
     } else {
-      this.error = 'Incorrect password. Please try again.';
+      this.error = 'Incorrect credentials. Please try again.';
     }
   }
 

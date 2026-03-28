@@ -1,0 +1,78 @@
+<div class="mt-4 space-y-3">
+  <label class="block text-white">Name</label>
+  <input placeholder="Model Name" class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white" />
+
+  <label class="block text-white">Slug</label>
+  <input placeholder="Model Slug (Url friendly)" class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white" />
+
+  <label class="block text-white">Location</label>
+  <input autocomplete="additional-name" placeholder="Model Location" class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white" />
+
+  <label class="block text-white">Description</label>
+  <textarea
+    placeholder="Model Description"
+    class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white"
+  ></textarea>
+
+  <label class="block text-white">Category</label>
+  <select class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white">
+    <option selected disabled value="">Select a category</option>
+    <option value="category1">Top</option>
+    <option value="category2">Hottest</option>
+    <option value="category2">Popular</option>
+    <option value="category2">New</option>
+  </select>
+  <p class="mb-4 text-white">Tags</p>
+  <div class="grid grid-cols-2 gap-x-10 gap-y-4">
+    @for (tag of tags; track tag.id) {
+      <label class="flex items-center gap-3 text-white">
+        <input
+          type="checkbox"
+          [id]="tag.id"
+          [name]="tag.id"
+          [checked]="tag.checked"
+          class="h-5 w-5 rounded border border-white/10 bg-transparent accent-pink-500"
+        />
+        <span>{{ tag.label }}</span>
+      </label>
+    }
+  </div>
+<!-- 
+  <p class="mb-4 mt-8 text-white">Status</p>
+  <div class="space-y-4">
+    @for (status of statuses; track status.id) {
+      <label class="flex items-center gap-3 text-white">
+        <input
+          type="checkbox"
+          [id]="status.id"
+          [name]="status.id"
+          [checked]="status.checked"
+          class="h-5 w-5 rounded border border-white/10 bg-transparent accent-pink-500"
+        />
+        <span>{{ status.label }}</span>
+      </label>
+    }
+  </div> -->
+
+  <label class="mb-4 mt-8 block text-white">OnlyFans URL</label>
+  <input
+    type="url"
+    placeholder="https://onlyfans.com/..."
+    class="mb-6 w-full p-2 rounded bg-[#1E1E28] text-white"
+  />
+</div>
+
+<div class="flex gap-2 mt-6">
+  <button
+    (click)="cancelCreate()"
+    class="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg cursor-pointer"
+  >
+    Cancel
+  </button>
+
+  <button
+    class="w-full bg-button-active hover:bg-secondary text-white py-2 rounded-lg cursor-pointer"
+  >
+    Create
+  </button>
+</div>

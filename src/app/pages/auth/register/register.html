@@ -1,14 +1,16 @@
 <div class="mx-auto container min-h-screen flex items-center justify-center">
   <div class="bg-[#0F0F16] border border-gray-800 rounded-xl p-8 max-w-md w-full">
-    <h1 class="text-white text-3xl font-semibold text-center">Login</h1>
-    <p class="text-gray-400 mt-2 text-center">Enter your credentials to access</p>
+    <h1 class="text-white text-3xl font-semibold text-center">Register</h1>
+    <p class="text-gray-400 mt-2 text-center">Create an account to get started</p>
 
-    <form class="mt-6" (ngSubmit)="login()">
+    <form class="mt-6" (ngSubmit)="register()">
       <div class="relative">
-        <label for="login" class="text-gray-400">Login</label>
+        <label for="login" class="text-gray-400">Email</label>
         <input
+          [(ngModel)]="email"
+          (ngModelChange)="error = ''"
           name="login"
-          placeholder="Login"
+          placeholder="Email address"
           class="w-full bg-[#1E1E28] border mb-5 border-gray-800 rounded-lg px-4 py-2 mt-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <label for="password" class="text-gray-400">Password</label>
@@ -36,8 +38,10 @@
         }
       </div>
       <p class="text-gray-400 text-sm mt-2">
-        Don't have an account?
-        <span routerLink="/register" class="text-secondary hover:underline cursor-pointer">Register</span>
+        Forgot your
+        <span routerLink="/forgot-password" class="text-secondary hover:underline cursor-pointer">
+          password?
+        </span>
       </p>
 
       <div class="mt-8">
@@ -45,7 +49,7 @@
           type="submit"
           class="w-full cursor-pointer bg-secondary hover:bg-button-active text-white font-semibold rounded-lg px-4 py-2 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0F0F16] focus:ring-blue-500"
         >
-          Login
+          Register
         </button>
       </div>
     </form>

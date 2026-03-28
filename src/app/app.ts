@@ -23,7 +23,7 @@ export class App {
   }
 
   private updateNavbarVisibility(url: string): void {
-    const hiddenRoutes = ['/login', '/admin'];
+    const hiddenRoutes = ['/login', '/admin', '/register', '/forgot-password'];
     this.showNavbar.set(!hiddenRoutes.some((route) => url.startsWith(route)));
   }
 }

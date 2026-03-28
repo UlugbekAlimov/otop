@@ -13,8 +13,23 @@
         </a>
         <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-md">About</a>
       </div>
-      <div class="rounded-full bg-button-active hover:bg-[#a44d9e] transition-colors">
-        <button class="text-white px-4 cursor-pointer py-2 rounded-md text-md">Join Now</button>
+      <div class="flex gap-3">
+        <div>
+          <button
+            routerLink="/wishlist"
+            class="text-white bg-button-active hover:bg-[#a44d9e] transition-colors px-4 cursor-pointer py-2 rounded-md text-md"
+          >
+            <img class="h-6 w-6" src="./assets/user-heart.svg" alt="liked" />
+          </button>
+        </div>
+        <div>
+          <button
+            routerLink="/login"
+            class="text-white px-4 border-gray-600 border cursor-pointer py-2 rounded-md text-md"
+          >
+            Login
+          </button>
+        </div>
       </div>
     </div>
   </div>

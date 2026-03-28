@@ -1,1 +1,30 @@
-<p>admin works!</p>
+<admin-navbar></admin-navbar>
+<div class="container mx-auto pb-20 px-25 mt-30">
+  <div class="grid w-full gap-6 items-start xl:grid-cols-[420px_minmax(0,1fr)]">
+    <div class="p-4 bg-[#12131C] border-2 rounded-lg border-gray-700">
+      <p class="text-white text-xl font-semibold">
+        {{ isCreating ? 'Add your info' : 'Quick Action' }}
+      </p>
+
+      @if (!isCreating) {
+        <button
+          (click)="isCreating = true"
+          class="flex items-center cursor-pointer justify-center gap-1 bg-button-active mt-6 hover:bg-secondary w-full text-white font-bold py-2 px-4 rounded-lg"
+        >
+          <img class="w-5 h-5" src="./assets/plus.svg" />
+          Create a Model
+        </button>
+      }
+
+      @if (isCreating) {
+        <model-form (cancel)="cancelCreate()"></model-form>
+      }
+    </div>
+
+    <div class="min-w-0">
+      <p class="text-white text-xl font-semibold">All Models</p>
+      <p class="text-gray-400 text-sm mt-2 font-semibold">6 models total</p>
+      <model-card></model-card>
+    </div>
+  </div>
+</div>

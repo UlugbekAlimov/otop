@@ -1,30 +1,30 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-forgot-password',
   imports: [FormsModule, RouterLink],
-  templateUrl: './login.html',
-  styleUrl: './login.css',
+  templateUrl: './forgot-password.html',
+  styleUrl: './forgot-password.css',
 })
-export class Login {
-  password: string = '';
+export class ForgotPassword {
+  email: string = '';
   showPassword = false;
   error: string = '';
 
   constructor(private router: Router) {}
 
-  login() {
-    if (this.password === 'admin') {
+  resetPassword() {
+    if (this.email === 'admin') {
       this.router.navigate(['/admin']);
       this.error = '';
     } else {
-      this.error = 'Incorrect password. Please try again.';
+      this.error = 'Incorrect email. Please try again.';
     }
   }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
-  };
+  }
 }
