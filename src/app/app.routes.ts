@@ -7,6 +7,7 @@ import { Wishlist } from './pages/wishlist/wishlist';
 import { Register } from './pages/auth/register/register';
 import { ForgotPassword } from './pages/auth/forgot-password/forgot-password';
 import { Moderation } from './pages/moderation/moderation';
+import { Pricing } from './pages/pricing/pricing';
 
 export const routes: Routes = [
   { path: '', component: Main },
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: 'forgot-password', component: ForgotPassword },
+  { path: 'pricing', component: Pricing }
 ];
